@@ -9,11 +9,13 @@ namespace Malshinon.Models
 {
     public class SqlConn
     {
+        private string _ConnStr = "Server=localhost;User=root;Password=;Database=malshinon";
+
         public MySqlConnection Open()
         {
             try
             {
-                MySqlConnection openConn = new MySqlConnection();         
+                MySqlConnection openConn = new MySqlConnection(_ConnStr);         
                 openConn.Open();
                 return openConn;
             }
