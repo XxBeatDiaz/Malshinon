@@ -10,7 +10,6 @@
   <ItemGroup>
     <Folder Include="Classes\" />
     <Folder Include="Dals\" />
-    <Folder Include="SqlConnection\" />
   </ItemGroup>
 
 </Project>
