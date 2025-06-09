@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Malshinon.Classes
+namespace Malshinon.Models
 {
     public class People
     {
