@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Dals\" />
+    <Folder Include="SqlConnection\" />
     <Folder Include="Classes\" />
   </ItemGroup>
 
