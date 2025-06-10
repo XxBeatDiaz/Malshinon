@@ -9,12 +9,12 @@ namespace Malshinon.Models
     public class People
     {
         int Id { get; set; }
-        string FirstName { get; set; }
-        string LastName { get; set;}
-        string SecretCode { get; set; }
-        string TypeOfPeople { get; set; }
-        int NumReports { get; set; }
-        int NumMentions { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set;}
+        public string SecretCode { get; set; }
+        public string TypeOfPeople { get; set; }
+        public int NumReports { get; set; }
+        public int NumMentions { get; set; }
 
         public void PrintPeople()
         {

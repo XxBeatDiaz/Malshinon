@@ -9,9 +9,9 @@ namespace Malshinon.Models
 {
     public class SqlConn
     {
-        private string _ConnStr = "Server=localhost;User=root;Password=;Database=malshinon";
+        static private string _ConnStr = "Server=localhost;User=root;Password=;Database=malshinon";
 
-        public MySqlConnection Open()
+        static public MySqlConnection Open()
         {
             try
             {
