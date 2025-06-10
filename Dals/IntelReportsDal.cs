@@ -9,7 +9,7 @@ namespace Malshinon.Models
 {
     public class IntelReportsDal
     {
-        public IntelReports AddIntelReport(IntelReports intelReport)
+        public IntelReport AddIntelReport(IntelReport intelReport)
         {
             try
             {
@@ -37,11 +37,11 @@ namespace Malshinon.Models
         }
 
 
-        public IntelReports GetIntelReportById(int id)
+        public IntelReport GetIntelReportById(int id)
         {
             try
             {
-                IntelReports intelReport = new IntelReports();
+                IntelReport intelReport = new IntelReport();
                 using (var conn = SqlConn.Open())
                 {
                     string Query = $"SELECT * FROM intelReports WHERE intelreports.id = {id}";
@@ -51,7 +51,7 @@ namespace Malshinon.Models
                         var reader = cmd.ExecuteReader();
                         if (reader.Read())
                         {
-                            intelReport = new IntelReports()
+                            intelReport = new IntelReport()
                             {
                                 Id = reader.GetInt32("id"),
                                 Content = reader.GetString("content"),                              
@@ -92,11 +92,11 @@ namespace Malshinon.Models
         }
 
 
-        public IntelReports DeleteIntelReport(int id)
+        public IntelReport DeleteIntelReport(int id)
         {
             try
             {
-                IntelReports intelReport = GetIntelReportById(id);
+                IntelReport intelReport = GetIntelReportById(id);
                 using (var conn = SqlConn.Open())
                 {
                     string Query = $"DELETE FROM intelreports WHERE intelreports.id = {id}";
