@@ -8,16 +8,17 @@ namespace Malshinon.Models
 {
     public class People
     {
-        int Id;
-        string FirstName, LastName;
-        string SecretCode;
-        string TypeOfPeople;
-        int NumReports;
-        int NumMentions;
+        int Id { get; set; }
+        string FirstName { get; set; }
+        string LastName { get; set;}
+        string SecretCode { get; set; }
+        string TypeOfPeople { get; set; }
+        int NumReports { get; set; }
+        int NumMentions { get; set; }
 
         public void PrintPeople()
         {
-            Console.WriteLine($"Id: {Id}, FirstName: {FirstName}, LastName: {LastName}, TypeOfPeople: {TypeOfPeople}, NumReports: {NumReports}, NumNentions: {NumMentions}");
+            Console.WriteLine($"Id: {Id}, FirstName: {FirstName}, LastName: {LastName}, SecretCode: {SecretCode}, TypeOfPeople: {TypeOfPeople}, NumReports: {NumReports}, NumNentions: {NumMentions}");
         }
     }
 }
