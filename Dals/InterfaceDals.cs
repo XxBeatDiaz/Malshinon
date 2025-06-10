@@ -9,9 +9,9 @@ namespace Malshinon.Models
 {
     public interface InterfaceDals
     {
-        public void Add();
+        public void AddRow();
         public object GetById();
-        public List<object> GetList();
+        public void Update();
         public void Delete();
     }
 }
