@@ -11,14 +11,14 @@ namespace Malshinon.Models
     public class PeopleDal //: InterfaceDals
     {
 
-        public void Add(People people)
+        public void AddRow(People people)
         {
             try
             {
                 using (var conn = SqlConn.Open())
                 {
-                    string Query = @"INSERT INTO people (first_name, last_name, secret_code, type, num_reports, num_mentions) 
-                                     VALUES (@first_name, @last_name, @secret_code, @type, @num_reports, @num_mentions)";
+                    string Query = @"INSERT INTO people (first_name, last_name, secret_code, type_of_people, num_reports, num_mention) 
+                                     VALUES (@first_name, @last_name, @secret_code, @type_of_people, @num_reports, @num_mention)";
 
                     using (var cmd = new MySqlCommand(Query, conn))
                     {
@@ -27,7 +27,7 @@ namespace Malshinon.Models
                         cmd.Parameters.AddWithValue("@secret_code", people.SecretCode);
                         cmd.Parameters.AddWithValue("@type_of_people", people.TypeOfPeople);
                         cmd.Parameters.AddWithValue("@num_reports", people.NumReports);
-                        cmd.Parameters.AddWithValue("@num_mentions", people.NumMentions);
+                        cmd.Parameters.AddWithValue("@num_mention", people.NumMentions);
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -40,14 +40,14 @@ namespace Malshinon.Models
         }
 
 
-        public People GetById()
+        public People GetById(int id)
         {
             try
             {
                 People people = new People();
                 using (var conn = SqlConn.Open())
                 {
-                    string Query = "SELECT * FROM people";
+                    string Query = $"SELECT * FROM people WHERE people.id = {id}";
 
                     using (var cmd = new MySqlCommand(Query, conn))
                     {
@@ -56,17 +56,18 @@ namespace Malshinon.Models
                         {
                             people = new People()
                             {
+                                Id = reader.GetInt32("id"),
                                 FirstName = reader.GetString("first_name"),
-                                 LastName = reader.GetString("last_name"),
-                                 SecretCode = reader.GetString("secret_code"),
-                                 TypeOfPeople = reader.GetString("type_of_people"),
-                                 NumReports = reader.GetInt32("num_reports"),
-                                 NumMentions = reader.GetInt32("num_mentions")
+                                LastName = reader.GetString("last_name"),
+                                SecretCode = reader.GetString("secret_code"),
+                                TypeOfPeople = reader.GetString("type_of_people"),
+                                NumReports = reader.GetInt32("num_reports"),
+                                NumMentions = reader.GetInt32("num_mention")
                             };
                         }
                     }
                 }
-            return people;
+                return people;
             }
             catch (MySqlException ex)
             {

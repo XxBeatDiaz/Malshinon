@@ -10,7 +10,7 @@ namespace Malshinon.Models
 {
     public class IntelReports
     {
-        int Id { get; set; }
+        public int Id { get; set; }
         public int ReporterId { get; set; }
         public int TargetId { get; set; }
         public string Content { get; set; }
