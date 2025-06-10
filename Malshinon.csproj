@@ -10,6 +10,15 @@
   <ItemGroup>
     <Folder Include="Dals\" />
     <Folder Include="SqlConnection\" />
+    <Folder Include="Classes\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="9.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="9.3.0" />
   </ItemGroup>
 
 </Project>
