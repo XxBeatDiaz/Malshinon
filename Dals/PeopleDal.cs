@@ -18,15 +18,15 @@ namespace Malshinon.Models
             {
                 using (var conn = SqlConn.Open())
                 {
-                    string Query = @"INSERT INTO people (first_name, last_name, secret_code, type_of_people, num_reports, num_mention) 
-                                                 VALUES (@first_name, @last_name, @secret_code, @type_of_people, @num_reports, @num_mention)";
+                    string Query = @"INSERT INTO people (first_name, last_name, secret_code, type_of_person, num_reports, num_mention) 
+                                                 VALUES (@first_name, @last_name, @secret_code, @type_of_person, @num_reports, @num_mention)";
 
                     using (var cmd = new MySqlCommand(Query, conn))
                     {
                         cmd.Parameters.AddWithValue("@first_name", person.FirstName);
                         cmd.Parameters.AddWithValue("@last_name", person.LastName);
                         cmd.Parameters.AddWithValue("@secret_code", person.SecretCode);
-                        cmd.Parameters.AddWithValue("@type_of_people", person.TypeOfPerson);
+                        cmd.Parameters.AddWithValue("@type_of_person", person.TypeOfPerson);
                         cmd.Parameters.AddWithValue("@num_reports", person.NumReports);
                         cmd.Parameters.AddWithValue("@num_mention", person.NumMentions);
 
@@ -149,7 +149,7 @@ namespace Malshinon.Models
                                    $"first_name = '{person.FirstName}'," +
                                    $"last_name = '{person.LastName}'," +
                                    $"secret_cod = '{person.SecretCode}'," +
-                                   $"type_of_people = '{person.TypeOfPerson}'," +
+                                   $"type_of_person = '{person.TypeOfPerson}'," +
                                    $"num_reports = '{person.NumReports}'," +
                                    $"num_mentions = '{person.NumMentions}'," +
                                    $"WHERE people.id = '{person.Id}'";

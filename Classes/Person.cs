@@ -19,7 +19,7 @@ namespace Malshinon.Models
 
         public void PrintPerson()
         {
-            Console.WriteLine($"Id: {Id}, FirstName: {FirstName}, LastName: {LastName}, SecretCode: {SecretCode}, TypeOfPeople: {TypeOfPerson}, NumReports: {NumReports}, NumNentions: {NumMentions}");
+            Console.WriteLine($"Id: {Id}, FirstName: {FirstName}, LastName: {LastName}, SecretCode: {SecretCode}, TypeOfPerson: {TypeOfPerson}, NumReports: {NumReports}, NumNentions: {NumMentions}");
         }
 
 
@@ -34,7 +34,7 @@ namespace Malshinon.Models
                     FirstName = reader.GetString("first_name"),
                     LastName = reader.GetString("last_name"),
                     SecretCode = reader.GetString("secret_code"),
-                    TypeOfPerson = reader.GetString("type_of_people"),
+                    TypeOfPerson = reader.GetString("type_of_person"),
                     NumReports = reader.GetInt32("num_reports"),
                     NumMentions = reader.GetInt32("num_mention")
                 };

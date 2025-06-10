@@ -8,7 +8,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Malshinon.Models
 {
-    public class IntelReports
+    public class IntelReport
     {
         public int Id { get; set; }
         public int ReporterId { get; set; }
@@ -16,7 +16,7 @@ namespace Malshinon.Models
         public string Content { get; set; }
         public DateTime Timestamp { get; set; }
 
-        public void ShowIntelReports()
+        public void ShowIntelReport()
         {
             Console.WriteLine($":{Id},:{ReporterId},:{TargetId},:{Content},:{Timestamp}");
         }
