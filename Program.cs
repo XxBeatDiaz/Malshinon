@@ -5,7 +5,7 @@ namespace Malshinon
     {
         static void Main(string[] args)
         {
-            string[] statusArry = ["reporter", "target", "both", "potential_agent"];
+            
             MainMenu menu = new MainMenu();
             menu.Menu();
         }

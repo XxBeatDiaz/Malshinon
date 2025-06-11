@@ -87,6 +87,7 @@ namespace Malshinon.Models
                         if (reader.HasRows)
                         {
                             person = Person.FormaterPerson(reader);                            
+                            Console.WriteLine("You got the person by secret code.");
                         }
                         else
                         {
@@ -94,7 +95,6 @@ namespace Malshinon.Models
                         }
                     }
                 }
-                Console.WriteLine("You got the person by secret code");
                 return person;
             }
             catch (MySqlException)
