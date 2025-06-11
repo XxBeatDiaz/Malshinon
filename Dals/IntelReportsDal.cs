@@ -16,7 +16,8 @@ namespace Malshinon.Models
                 using (var conn = SqlConn.Open())
                 {
                     string Query = @"INSERT INTO intelreports (content, reporter_id, target_id, timestamp1) 
-                                     VALUES (@content, @reporter_id, @target_id, @timestamp1)";
+                                     VALUES (@content, @reporter_id, @target_id, @timestamp1);
+                                     SELECT * FROM intelreports WHERE intelreports.id = LAST_INSERT_ID;";
 
                     using (var cmd = new MySqlCommand(Query, conn))
                     {
