@@ -32,7 +32,7 @@ namespace Malshinon.Models
                         cmd.Parameters.AddWithValue("@num_mention", person.NumMentions);
 
                         var reader = cmd.ExecuteReader();
-                        Person.FormaterPerson(reader);
+                        person = Person.FormaterPerson(reader);
                     }
                 }
                 Console.WriteLine("Adding person successful");
@@ -58,7 +58,7 @@ namespace Malshinon.Models
                     using (var cmd = new MySqlCommand(Query, conn))
                     {
                         var reader = cmd.ExecuteReader();
-                        Person.FormaterPerson(reader);
+                        person = Person.FormaterPerson(reader);
                     }
                 }
                 Console.WriteLine("You got the person by id");
@@ -84,7 +84,7 @@ namespace Malshinon.Models
                     using (var cmd = new MySqlCommand(Query, conn))
                     {
                         var reader = cmd.ExecuteReader();
-                        Person.FormaterPerson(reader);
+                        person = Person.FormaterPerson(reader);
                     }
                 }
                 Console.WriteLine("You got the person by secret code");
@@ -163,7 +163,7 @@ namespace Malshinon.Models
                     using (var cmd = new MySqlCommand(Query, conn))
                     {
                         var reader = cmd.ExecuteReader();
-                        Person.FormaterPerson(reader);
+                        person = Person.FormaterPerson(reader);
                     }
                 }
                 Console.WriteLine("The person updating successful");

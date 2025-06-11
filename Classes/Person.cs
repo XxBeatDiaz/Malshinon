@@ -19,7 +19,13 @@ namespace Malshinon.Models
 
         public void PrintPerson()
         {
-            Console.WriteLine($"Id: {Id}, FirstName: {FirstName}, LastName: {LastName}, SecretCode: {SecretCode}, TypeOfPerson: {TypeOfPerson}, NumReports: {NumReports}, NumNentions: {NumMentions}");
+            Console.WriteLine($"Id: {Id},\n" +
+                            $"FirstName: {FirstName},\n" +
+                            $"LastName: {LastName},\n" +
+                            $"SecretCode: {SecretCode},\n" +
+                            $"TypeOfPerson: {TypeOfPerson},\n" +
+                            $"NumReports: {NumReports},\n" +
+                            $"NumNentions: {NumMentions}");
         }
 
 
