@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Google.Protobuf.Compiler;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace Malshinon.Models
                 {
                     string Query = @"INSERT INTO intelreports (content, reporter_id, target_id, timestamp1) 
                                      VALUES (@content, @reporter_id, @target_id, @timestamp1);
-                                     SELECT * FROM intelreports WHERE intelreports.id = LAST_INSERT_ID;";
+                                     SELECT * FROM intelreports WHERE intelreports.id = LAST_INSERT_ID();";
 
                     using (var cmd = new MySqlCommand(Query, conn))
                     {
@@ -25,7 +26,9 @@ namespace Malshinon.Models
                         cmd.Parameters.AddWithValue("@reporter_id", intelReport.ReporterId);
                         cmd.Parameters.AddWithValue("@target_id", intelReport.TargetId);
                         cmd.Parameters.AddWithValue("@timestamp1", intelReport.Timestamp);
-                        cmd.ExecuteNonQuery();
+
+                        var reader = cmd.ExecuteReader();
+                        intelReport = IntelReport.FormaterIntelReport(reader);
                     }
                 }
                 Console.WriteLine("Insert intel report successful");
