@@ -38,7 +38,7 @@ namespace Malshinon.Models
                 Console.WriteLine("Adding person: successful.");
                 return person;
             }
-            catch (MySqlException ex)
+            catch (MySqlException)
             {
                 //Console.WriteLine($"Error MySql: {ex.Message}");
                 return null;
@@ -100,8 +100,7 @@ namespace Malshinon.Models
             catch (MySqlException)
             {
                 //Console.WriteLine($"Error Sql: {ex.Message}");
-                return null;
-                
+                return null;            
             }
         }
 

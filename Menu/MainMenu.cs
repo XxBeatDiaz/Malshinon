@@ -15,6 +15,7 @@ namespace Malshinon.Models
         public void Menu()
         {
             bool exitFlag = true;
+
             while (exitFlag)
             {
                 Console.Write("Enter num: ");
@@ -31,7 +32,8 @@ namespace Malshinon.Models
 
                     case 3:
                         exitFlag = false;
-                        break;
+                        continue;
+                        
 
                     default:
                         break;
@@ -43,6 +45,7 @@ namespace Malshinon.Models
                 Console.WriteLine(newTarget.TypeOfPerson);
                 newTarget = peopleDal.UpdateTypeOfPerson(newTarget);
                 newTarget.PrintPerson();
+
                 //Report 
                 Console.Write("Enter intel report: ");
                 string userIntelReport = Console.ReadLine()!;
@@ -51,7 +54,7 @@ namespace Malshinon.Models
 
 
 
-                //int user = int.Parse(Console.ReadLine()!);
+                
             }
         }
 
