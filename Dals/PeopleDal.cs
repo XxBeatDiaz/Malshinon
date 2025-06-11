@@ -19,8 +19,8 @@ namespace Malshinon.Models
                 using (var conn = SqlConn.Open())
                 {
                     string Query = @"INSERT INTO people (first_name, last_name, secret_code, type_of_person, num_reports, num_mention) 
-                                                 VALUES (@first_name, @last_name, @secret_code, @type_of_person, @num_reports, @num_mention);
-                                                 SELECT * FROM people WHERE people.id = LAST_INSERT_ID;";
+                                     VALUES (@first_name, @last_name, @secret_code, @type_of_person, @num_reports, @num_mention);
+                                     SELECT * FROM people WHERE people.id = LAST_INSERT_ID();";
 
                     using (var cmd = new MySqlCommand(Query, conn))
                     {
@@ -32,7 +32,7 @@ namespace Malshinon.Models
                         cmd.Parameters.AddWithValue("@num_mention", person.NumMentions);
 
                         var reader = cmd.ExecuteReader();
-                        Person.FormaterPerson(reader);
+                        person = Person.FormaterPerson(reader);
                     }
                 }
                 Console.WriteLine("Adding person successful");
@@ -58,7 +58,7 @@ namespace Malshinon.Models
                     using (var cmd = new MySqlCommand(Query, conn))
                     {
                         var reader = cmd.ExecuteReader();
-                        Person.FormaterPerson(reader);
+                        person = Person.FormaterPerson(reader);
                     }
                 }
                 Console.WriteLine("You got the person by id");
@@ -84,7 +84,7 @@ namespace Malshinon.Models
                     using (var cmd = new MySqlCommand(Query, conn))
                     {
                         var reader = cmd.ExecuteReader();
-                        Person.FormaterPerson(reader);
+                        person = Person.FormaterPerson(reader);
                     }
                 }
                 Console.WriteLine("You got the person by secret code");
@@ -163,7 +163,7 @@ namespace Malshinon.Models
                     using (var cmd = new MySqlCommand(Query, conn))
                     {
                         var reader = cmd.ExecuteReader();
-                        Person.FormaterPerson(reader);
+                        person = Person.FormaterPerson(reader);
                     }
                 }
                 Console.WriteLine("The person updating successful");
