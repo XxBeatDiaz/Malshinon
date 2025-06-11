@@ -35,13 +35,13 @@ namespace Malshinon.Models
                         person = Person.FormaterPerson(reader);
                     }
                 }
-                Console.WriteLine("Adding person successful");
+                Console.WriteLine("Adding person: successful.");
                 return person;
             }
             catch (MySqlException ex)
             {
-                Console.WriteLine($"Error MySql: {ex.Message}");
-                throw;
+                //Console.WriteLine($"Error MySql: {ex.Message}");
+                return null;
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Protobuf.Compiler;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,35 +18,53 @@ namespace Malshinon.Models
             {
                 Console.Write("Enter your Secret code: ");
                 string userSecretCode = Console.ReadLine()!;
-                Person person = peopleDal.FindPersonBySecretCode(userSecretCode);
-                bool isNull = CheckNullPerson(person);
-                
-                if (isNull)
+
+                Person person = Login(userSecretCode);
+
+                if (CheckNullPerson(person))
                 {
-                    Console.WriteLine("The Secret code not exists.\n");
-                    Console.WriteLine("↓↓↓↓↓ Creat a new person ↓↓↓↓↓");
-                    person = CreatNewPerson(userSecretCode);
-                    peopleDal.AddPerson(person);
+                    person = SignIn(userSecretCode);
                 }
-                               
+
+
+
                 Console.Write("Enter target secret code: ");
                 string targetSecretCode = Console.ReadLine()!;
-                Person targetPerson = peopleDal.FindPersonBySecretCode(userSecretCode);
-                isNull = CheckNullPerson(targetPerson);
-
-                Console.Write("Enter intel report: ");
-                string userIntelReport = Console.ReadLine()!;
+                Person targetPerson = peopleDal.FindPersonBySecretCode(targetSecretCode);
+                bool isNull = CheckNullPerson(targetPerson);
                 
                 if (isNull)
                 {
                     Console.WriteLine("The Secret code not exists.\n");
                     Console.WriteLine("↓↓↓↓↓ Creat a new person ↓↓↓↓↓");
                     targetPerson = CreatNewPerson(targetSecretCode, "Target");
+                    peopleDal.AddPerson(targetPerson);
                 }
                 
+                Console.Write("Enter intel report: ");
+                string userIntelReport = Console.ReadLine()!;
 
                 //int user = int.Parse(Console.ReadLine()!);
             }
+        }
+
+
+        public Person Login(string userSecretCode)
+        {
+            //Console.Write("Enter your Secret code: ");
+            //string userSecretCode = Console.ReadLine()!;
+            Person person = peopleDal.FindPersonBySecretCode(userSecretCode);
+            return person;
+        }
+
+
+        public Person SignIn(string userSecretCode)
+        {           
+            Console.WriteLine("The Secret code not exists.\n");
+            Console.WriteLine("↓↓↓↓↓ Creat a new person ↓↓↓↓↓");
+            Person person = CreatNewPerson(userSecretCode);
+            person = peopleDal.AddPerson(person);
+            return person;    
         }
 
 
@@ -62,7 +81,7 @@ namespace Malshinon.Models
         }
 
 
-        public Person CreatNewPerson(string? secretCode = null, string typeOfPerson = "Reporter", int numReports = 0, int numMention = 0)
+        public Person CreatNewPerson(string secretCode = null, string typeOfPerson = null, int numReports = 0, int numMention = 0)
         {
             Console.Write("Enter first name: ");
             string firstName = Console.ReadLine()!;
@@ -76,6 +95,11 @@ namespace Malshinon.Models
                 Console.Write("Enter secret code: ");
                 secretCode = Console.ReadLine()!;
             }
+
+            //if (typeOfPerson == null)
+            //{
+            //    typeOfPerson = "Reporter";
+            //}            
 
             typeOfPerson = CheckAndCorrectTypeOfPerson(typeOfPerson);
 
@@ -103,10 +127,12 @@ namespace Malshinon.Models
             }
             else if (typeOfPerson == statusArry[0])
             {
-                statusType = statusArry[3];
+                statusType = statusArry[2];
             }
             return statusType;
         }
+
+
         public bool CheckSecretCode(string secretCode)
         {
             bool isNull = false;
