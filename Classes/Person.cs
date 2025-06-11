@@ -10,10 +10,10 @@ namespace Malshinon.Models
     public class Person
     {
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set;}
-        public string SecretCode { get; set; }
-        public string TypeOfPerson { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set;}
+        public string? SecretCode { get; set; }
+        public string? TypeOfPerson { get; set; }
         public int NumReports { get; set; }
         public int NumMentions { get; set; }
 
@@ -46,6 +46,18 @@ namespace Malshinon.Models
                 };
             } 
             return person;
+        }
+
+        static public bool CheckNullPerson(Person person)
+        {
+            bool isNull = false;
+
+            if (person == null)
+            {
+                isNull = true;
+            }
+            Console.WriteLine($"Is null: {isNull}.");
+            return isNull;
         }
     }
 }

@@ -17,13 +17,14 @@ namespace Malshinon.Models
             {
                 MySqlConnection openConn = new MySqlConnection(_ConnStr);         
                 openConn.Open();
-                Console.WriteLine("connection Successful");
+                Console.WriteLine("Connection: Successful.");
                 return openConn;
             }
             catch (MySqlException ex)
             {
-                Console.WriteLine($"ErrorMySQl: {ex.Message}");
-                throw;
+                Console.WriteLine("Connection: Not successful. ");
+                return null;
+                //Console.WriteLine($"ErrorMySQl: {ex.Message}");
             }
         }
     }
