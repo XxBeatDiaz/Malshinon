@@ -34,6 +34,7 @@ namespace Malshinon.Models
                         Person.FormaterPerson(reader);
                     }
                 }
+                Console.WriteLine("Adding person successful");
                 return person;
             }
             catch (MySqlException ex)
@@ -59,6 +60,7 @@ namespace Malshinon.Models
                         Person.FormaterPerson(reader);
                     }
                 }
+                Console.WriteLine("You got the person by id");
                 return person;
             }
             catch (MySqlException ex)
@@ -84,6 +86,7 @@ namespace Malshinon.Models
                         Person.FormaterPerson(reader);
                     }
                 }
+                Console.WriteLine("You got the person by secret code");
                 return person;
             }
             catch (MySqlException ex)
@@ -107,6 +110,7 @@ namespace Malshinon.Models
                         cmd.ExecuteNonQuery();
                     }
                 }
+                Console.WriteLine("Delete all persons successful");
             }
             catch (MySqlException ex)
             {
@@ -129,6 +133,7 @@ namespace Malshinon.Models
                         cmd.ExecuteNonQuery();
                     }
                 }
+                Console.WriteLine("Delete person successful");
                 return person;
             }
             catch (MySqlException ex)
@@ -160,6 +165,7 @@ namespace Malshinon.Models
                         Person.FormaterPerson(reader);
                     }
                 }
+                Console.WriteLine("The person updating successful");
                 return person;
             }
             catch (MySqlException ex)
