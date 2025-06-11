@@ -17,6 +17,7 @@ namespace Malshinon.Models
             {
                 MySqlConnection openConn = new MySqlConnection(_ConnStr);         
                 openConn.Open();
+                Console.WriteLine("connection Successful");
                 return openConn;
             }
             catch (MySqlException ex)

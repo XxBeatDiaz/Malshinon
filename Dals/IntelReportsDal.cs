@@ -27,6 +27,7 @@ namespace Malshinon.Models
                         cmd.ExecuteNonQuery();
                     }
                 }
+                Console.WriteLine("Insert intel report successful");
                 return intelReport;
             }
             catch (MySqlException ex)
@@ -37,7 +38,7 @@ namespace Malshinon.Models
         }
 
 
-        public IntelReport GetIntelReportById(int id)
+        public IntelReport FindIntelReportById(int id)
         {
             try
             {
@@ -60,6 +61,7 @@ namespace Malshinon.Models
                         }
                     }
                 }
+                Console.WriteLine("You got the intel report");
                 return intelReport;
             }
             catch (MySqlException ex)
@@ -83,6 +85,7 @@ namespace Malshinon.Models
                         cmd.ExecuteNonQuery();
                     }
                 }
+                Console.WriteLine("Delete all successful");
             }
             catch (MySqlException ex)
             {
@@ -92,20 +95,20 @@ namespace Malshinon.Models
         }
 
 
-        public IntelReport DeleteIntelReport(int id)
+        public IntelReport DeleteIntelReport(IntelReport intelReport)
         {
             try
-            {
-                IntelReport intelReport = GetIntelReportById(id);
+            {               
                 using (var conn = SqlConn.Open())
                 {
-                    string Query = $"DELETE FROM intelreports WHERE intelreports.id = {id}";
+                    string Query = $"DELETE FROM intelreports WHERE intelreports.id = {intelReport.Id}";
 
                     using (var cmd = new MySqlCommand(Query, conn))
                     {
                         cmd.ExecuteNonQuery();
                     }
                 }
+                Console.WriteLine("Delete intel report successful");
                 return intelReport;
             }
             catch (MySqlException ex)
