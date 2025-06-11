@@ -20,7 +20,7 @@ namespace Malshinon.Models
                 {
                     string Query = @"INSERT INTO people (first_name, last_name, secret_code, type_of_person, num_reports, num_mention) 
                                                  VALUES (@first_name, @last_name, @secret_code, @type_of_person, @num_reports, @num_mention);
-                                                 SELECT * FROM people WHERE people.id = LAST_INSERT_ID;";
+                                                 SELECT * FROM people WHERE people.id = LAST_INSERT_ID();";
 
                     using (var cmd = new MySqlCommand(Query, conn))
                     {
