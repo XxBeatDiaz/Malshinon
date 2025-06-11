@@ -1,4 +1,5 @@
 ﻿using Malshinon.Models;
+
 namespace Malshinon
 {
     class Program

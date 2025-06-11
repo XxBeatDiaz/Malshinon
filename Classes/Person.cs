@@ -47,5 +47,17 @@ namespace Malshinon.Models
             } 
             return person;
         }
+
+        static public bool CheckNullPerson(Person person)
+        {
+            bool isNull = false;
+
+            if (person == null)
+            {
+                isNull = true;
+            }
+            Console.WriteLine($"Is null: {isNull}.");
+            return isNull;
+        }
     }
 }

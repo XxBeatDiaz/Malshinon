@@ -162,10 +162,10 @@ namespace Malshinon.Models
                     string Query = $"UPDATE people SET " +
                                    $"first_name = '{person.FirstName}'," +
                                    $"last_name = '{person.LastName}'," +
-                                   $"secret_cod = '{person.SecretCode}'," +
+                                   $"secret_code = '{person.SecretCode}'," +
                                    $"type_of_person = '{person.TypeOfPerson}'," +
                                    $"num_reports = '{person.NumReports}'," +
-                                   $"num_mentions = '{person.NumMentions}'," +
+                                   $"num_mention = '{person.NumMentions}'" +
                                    $"WHERE people.id = '{person.Id}'";
 
                     using (var cmd = new MySqlCommand(Query, conn))
@@ -246,7 +246,7 @@ namespace Malshinon.Models
                 using (var conn = SqlConn.Open())
                 {
                     string Query = $"UPDATE people SET " +
-                                   $"type_of_person = '{person.TypeOfPerson}'," +
+                                   $"type_of_person = '{person.TypeOfPerson}'" +
                                    $"WHERE people.id = '{person.Id}'";
 
                     using (var cmd = new MySqlCommand(Query, conn))
