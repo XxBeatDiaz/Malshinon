@@ -175,5 +175,86 @@ namespace Malshinon.Models
                 throw;
             }
         }
+
+
+        public Person UpdateNumReports(Person person)
+        {
+            try
+            {
+                using (var conn = SqlConn.Open())
+                {
+                    string Query = $"UPDATE people SET " +
+                                   $"num_reports = '{person.NumReports}'," +
+                                   $"WHERE people.id = '{person.Id}'";
+
+                    using (var cmd = new MySqlCommand(Query, conn))
+                    {
+                        var reader = cmd.ExecuteReader();
+                        person = Person.FormaterPerson(reader);
+                    }
+                }
+                Console.WriteLine("The Num report updating successful");
+                return person;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine($"Error MySql: {ex.Message}");
+                throw;
+            }
+        }
+
+
+        public Person UpdateNumMention(Person person)
+        {
+            try
+            {
+                using (var conn = SqlConn.Open())
+                {
+                    string Query = $"UPDATE people SET " +
+                                   $"num_mentions = '{person.NumMentions}'," +
+                                   $"WHERE people.id = '{person.Id}'";
+
+                    using (var cmd = new MySqlCommand(Query, conn))
+                    {
+                        var reader = cmd.ExecuteReader();
+                        person = Person.FormaterPerson(reader);
+                    }
+                }
+                Console.WriteLine("The Num mention updating successful");
+                return person;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine($"Error MySql: {ex.Message}");
+                throw;
+            }
+        }
+
+
+        public Person UpdateTypeOfPerson(Person person)
+        {
+            try
+            {
+                using (var conn = SqlConn.Open())
+                {
+                    string Query = $"UPDATE people SET " +
+                                   $"type_of_person = '{person.TypeOfPerson}'," +
+                                   $"WHERE people.id = '{person.Id}'";
+
+                    using (var cmd = new MySqlCommand(Query, conn))
+                    {
+                        var reader = cmd.ExecuteReader();
+                        person = Person.FormaterPerson(reader);
+                    }
+                }
+                Console.WriteLine("The Type of person updating successful");
+                return person;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine($"Error MySql: {ex.Message}");
+                throw;
+            }
+        }
     }
 }
