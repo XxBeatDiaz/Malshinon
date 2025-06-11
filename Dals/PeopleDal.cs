@@ -72,28 +72,36 @@ namespace Malshinon.Models
         }
 
 
-        public Person FindPersonBySecretCode(int secretCode)
+        public Person FindPersonBySecretCode(string secretCode)
         {
             try
             {
-                Person person = new Person();
+                Person? person = new Person();
                 using (var conn = SqlConn.Open())
                 {
-                    string Query = $"SELECT * FROM people WHERE people.secretCode = {secretCode}";
+                    string Query = $"SELECT * FROM people WHERE people.secret_code = '{secretCode}'";
 
                     using (var cmd = new MySqlCommand(Query, conn))
                     {
                         var reader = cmd.ExecuteReader();
-                        person = Person.FormaterPerson(reader);
+                        if (reader.HasRows)
+                        {
+                            person = Person.FormaterPerson(reader);                            
+                        }
+                        else
+                        {
+                            person = null;
+                        }
                     }
                 }
                 Console.WriteLine("You got the person by secret code");
                 return person;
             }
-            catch (MySqlException ex)
+            catch (MySqlException)
             {
-                Console.WriteLine($"Error Sql: {ex.Message}");
-                throw;
+                //Console.WriteLine($"Error Sql: {ex.Message}");
+                return null;
+                
             }
         }
 
