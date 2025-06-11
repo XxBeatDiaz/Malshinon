@@ -32,12 +32,7 @@ namespace Malshinon.Models
             {
                 Console.Write("Enter secret code: ");
                 secretCode = Console.ReadLine()!;
-            }
-
-            //if (typeOfPerson == null)
-            //{
-            //    typeOfPerson = "Reporter";
-            //}            
+            }           
 
             typeOfPerson = CheckAndCorrectTypeOfPerson(typeOfPerson);
 
